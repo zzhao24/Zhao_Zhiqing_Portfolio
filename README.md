@@ -9,4 +9,6 @@
 * SASS
 * Javascript Fetch API, to get data from backend database
 * Fonts: Lato Sans for header and raleway for body
+## Liscence
+#### ISC
 
