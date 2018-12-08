@@ -1,0 +1,897 @@
+@import "variables";
+@import "mixins";
+
+// Foundation
+@import "../node_modules/foundation-sites/assets/foundation";
+
+// Portfolio
+
+// ======== GLOBAL ========
+
+body{
+  min-width: 320px;
+  font-size: 1rem;
+  background-color: $white;
+}
+
+#page{
+  width: 100%;
+  overflow: hidden;
+  @include breakpoint(large){
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    min-height: 850px;
+  }
+}
+
+.w-100{
+  width: 100%;
+}
+
+.h-100{
+  height: 100%;
+}
+
+h2, .h2{
+  font-size: 2.25rem;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h3{
+  font-weight: normal;
+}
+
+a{
+  color: $black;
+  &:hover,
+  &:active{
+    color: $black;
+    text-decoration: underline;
+  }
+}
+
+.full{
+  padding-right: .625rem;
+  padding-left: .625rem;
+
+  @include breakpoint(large){
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 100vh;
+    width: 100%;
+
+  }
+}
+
+.overlay{
+  background-color: rgba($black, .3);
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  @include breakpoint(large){
+    display: none !important;
+  }
+}
+
+section{
+  margin-bottom: 60px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  @include breakpoint(large){
+    min-height: 850px;
+    margin-bottom: 0;
+    padding-top: 180px;
+    padding-bottom: 70px;
+  }
+}
+
+
+.flex-wrapper{
+  max-width: 90%;
+  margin: 0 auto;
+  @extend %flex-box;
+
+  @include breakpoint(large){
+    max-width: 100%;
+  }
+}
+
+
+.btn{
+  display: inline-block;
+  font-family: $header-font-family;
+  text-transform: uppercase;
+  padding: 1rem 1.125rem;
+  background-color: $white;
+  color: $black;
+  border: 1px solid $black;
+  cursor: pointer;
+  -webkit-transition: color .3s ease, background-color .3s ease;
+  -moz-transition: color .3s ease, background-color .3s ease;
+  -ms-transition: color .3s ease, background-color .3s ease;
+  -o-transition: color .3s ease, background-color .3s ease;
+  transition: color .3s ease, background-color .3s ease;
+  &:hover{
+    background-color: $black;
+    color: $white;
+  }
+}
+
+
+.heading{
+  margin-bottom: 30px;
+  @include breakpoint(large){
+    text-align: center;
+    margin-bottom: 45px;
+    h2{
+      font-size: 3.5rem;
+    }
+  }
+
+}
+
+
+
+
+// ======== HEADER ========
+
+#main-header{
+  background-color: $white;
+  padding-right: .625rem;
+  padding-left: .625rem;
+  @include breakpoint(large){
+    padding-left: 30px;
+    padding-right: 0;
+  }
+  .header-logo{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    #site-logo{
+      line-height: 1;
+      margin-bottom: 0;
+      img{
+        height: 60px;
+        width: auto;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .main-wrapper{
+    align-items: center;
+
+    @include breakpoint(large){
+      align-items: flex-start;
+    }
+    #open-nav{
+      font-size: 2rem;
+    }
+  }
+
+
+  .nav-wrapper{
+    position: fixed;
+    height: 100vh;
+    width: 280px;
+    top: 0;
+    right: -280px;
+    bottom: 0;
+    background-color: $white;
+    overflow: auto;
+    opacity: 0;
+    -webkit-box-shadow: 0 0 20px 5px $shadow;
+    -moz-box-shadow: 0 0 20px 5px $shadow;
+    box-shadow: 0 0 20px 5px $shadow;
+    z-index: 999;
+    -webkit-transition: opacity .3s ease, right .5s ease;
+    -moz-transition: opacity .3s ease, right .5s ease;
+    -ms-transition: opacity .3s ease, right .5s ease;
+    -o-transition: opacity .3s ease, right .5s ease;
+    transition: opacity .3s ease, right .5s ease;
+
+    &.open{
+      right: 0;
+      opacity: 1;
+    }
+
+    .nav-list{
+      list-style: none;
+      margin-bottom: 0;
+      margin-left: 0;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      font-family: $header-font-family;
+      font-weight: bold;
+      li{
+        cursor: pointer;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 1rem 1.2rem;
+      }
+    }
+
+    a#close-nav{
+      display: inline-block;
+      font-weight: bold;
+      margin-right: 15px;
+      margin-top: 30px;
+      &:hover{
+        text-decoration: none;
+      }
+    }
+
+    @include breakpoint(large){
+      position: static;
+      opacity: 1 !important;
+      background-color: transparent;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      width: auto;
+      height: auto;
+      overflow: visible;
+
+      .nav-list{
+        padding: 0 0 30px 0;
+        display: flex;
+        position: relative;
+        &::after{
+          content: '';
+          position: absolute;
+          width: 9999px;
+          bottom: 20px;
+          right: 0;
+          height: 0;
+          border-bottom: 1px solid rgba($black, .2);
+        }
+
+        li{
+          width: 150px;
+          height: 100px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+
+          &::before{
+            content: '';
+            position: fixed;
+            height: 100vh;
+            top: 0;
+            width: 0;
+            border-left: 1px solid rgba($black, .2);
+            z-index: -1;
+          }
+
+          &#nav-cover::before{
+            right: 600px;
+          }
+
+          &#nav-about::before{
+            right: 450px;
+          }
+
+          &#nav-portfolio::before{
+            right: 300px;
+          }
+
+          &#nav-contact::before{
+            right: 150px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+// ======== COVER ========
+#cover{
+  .flex-wrapper{
+
+    align-items: center;
+
+    .desc,
+    .anime-figure{
+      @extend %column-general;
+      @include make-column(12);
+    }
+
+    .anime-figure{
+      order: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .desc{
+      order: 1;
+      font-family: $header-font-family;
+      text-transform: uppercase;
+      font-size: .625rem;
+
+      h2{
+        font-size: 5em;
+        line-height: 1.2;
+      }
+
+      .content{
+        p{
+          line-height: 1.2;
+        }
+
+        & > *:nth-child(2){
+          font-size: 2em;
+        }
+
+        & > *:nth-child(3){
+          font-size: 2.75em;
+          font-weight: bold;
+        }
+
+        & > *:nth-child(4){
+          font-size: 2.25em;
+        }
+      }
+
+      .quote{
+        p{
+          line-height: 1.2;
+        }
+        p{
+          font-size: 1.5em;
+        }
+        p#quote{
+          font-size: 3em;
+          font-weight: bold;
+        }
+        p#quote-sig{
+          font-size: 2em;
+        }
+      }
+
+    }
+
+
+    @include breakpoint(large){
+
+      .desc{
+        order: 0;
+        text-align: right;
+        flex: 0 0 calc(100% - 420px);
+        width: calc(100% - 420px);
+        font-size: .875rem;
+
+      }
+      .anime-figure{
+        order: 1;
+        flex: 0 0 420px;
+        width: 420px;
+
+      }
+    }
+
+    @include breakpoint(xlarge){
+      .desc {
+        font-size: 1rem;
+      }
+    }
+
+
+    @include breakpoint(xxlarge){
+      .desc{
+        flex: 0 0 calc(100% - 570px);
+        width: calc(100% - 570px);
+      }
+
+      .anime-figure{
+        flex: 0 0 570px;
+        width: 570px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    @include breakpoint(1680px){
+      .desc{
+        font-size: 1.175rem;
+
+      }
+    }
+  }
+}
+
+// ======== ABOUT ME ========
+
+
+#about{
+  .flex-wrapper{
+    justify-content: center;
+
+    .intro,
+    .column-skill,
+    .column-figure {
+      @extend %column-general;
+      @include make-column(12);
+      display: flex;
+      flex-wrap: wrap;
+      .skill{
+        text-align: center;
+
+        @include make-column(6);
+        img{
+          width: 100%;
+          max-width: 120px;
+        }
+      }
+    }
+
+    .intro{
+      margin-bottom: 45px;
+    }
+
+
+    @include breakpoint(large){
+      .intro{
+        text-align: center;
+      }
+
+      .column-skill{
+        @include make-column(4);
+        flex-direction: column;
+        &.left{
+          justify-content: center;
+          .skill{
+            margin-left: auto;
+          }
+        }
+        &.right{
+          justify-content: center;
+          .skill{
+            margin-right: auto;
+          }
+        }
+
+        .skill{
+          width: 120px;
+          p{
+            font-size: .85rem;
+          }
+          img{
+            width: auto;
+            height: 50px;
+          }
+        }
+      }
+      .column-figure{
+        @include make-column(4)
+      }
+    }
+    @include breakpoint(xlarge){
+      .intro{
+        @include make-column(10);
+      }
+
+      .column-skill{
+        @include make-column(4.5);
+      }
+      .column-figure{
+        @include make-column(3)
+      }
+    }
+    @include breakpoint(xxlarge){
+      .intro{
+        @include make-column(8);
+      }
+
+
+    }
+
+
+  }
+}
+
+
+
+// ======== MY WORK ========
+
+
+#portfolio{
+  .flex-wrapper{
+
+
+    .my-work{
+      text-align: center;
+      margin-bottom: 30px;
+      @extend %column-general;
+      @include make-column(12);
+
+      a{
+        display: inline-block;
+        height: 210px;
+        width: 210px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        -webkit-transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
+
+        &:hover{
+          -webkit-box-shadow: 0 0 20px 5px $shadow;
+          -moz-box-shadow: 0 0 20px 5px $shadow;
+          box-shadow: 0 0 20px 5px $shadow;
+        }
+        img{
+          height: 100%;
+          width: 100%;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          border-radius: 50%;
+          margin: 0;
+        }
+      }
+
+      @include breakpoint(medium){
+        @include make-column(6);
+      }
+
+      @include breakpoint(large only){
+        a{
+          height: 150px;
+          width: 150px;
+          img{
+            height: 150px;
+            width: 150px;
+          }
+        }
+      }
+
+      @include breakpoint(large){
+        @include make-column(3);
+        &:nth-child(2n-1){
+        }
+      }
+    }
+
+
+  }
+}
+
+
+
+
+
+// ======== CONTACT FORM ========
+
+#contact{
+  .flex-wrapper{
+
+
+    h3{
+      font-weight: normal;
+    }
+
+    .contact-form-wrapper,
+    .contact-info{
+        @extend %column-general;
+        @include make-column(12);
+    }
+    .contact-form-wrapper{
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+
+      form{
+        width: 100%;
+        max-width: 600px;
+        & > p{
+          margin-bottom: 1.5rem;
+        }
+        label{
+          display: none;
+        }
+        input:not([type="submit"]),
+        textarea{
+          width: 100%;
+          border: 1px solid $black;
+          -webkit-box-shadow: none;
+          -moz-box-shadow: none;
+          box-shadow: none;
+        }
+        textarea{
+          resize: none;
+        }
+      }
+    }
+
+    .contact-info{
+      h3{
+        margin-bottom: 30px;
+      }
+      .social-media{
+        list-style: none;
+        margin-left: 0;
+        margin-bottom: 15px;
+        font-size: 2.75rem;
+        li{
+          display: inline-block;
+          margin-right: 10px;
+          &:last-child{
+            margin-right: 0;
+          }
+        }
+      }
+      .contact-email{
+
+        font-size: 1.25rem;
+      }
+
+
+    }
+
+    @include breakpoint(large){
+
+
+      .contact-form-wrapper {
+        padding-right: 45px;
+        justify-content: center;
+        flex: 0 0 calc(100% - 420px);
+        width: calc(100% - 420px);
+      }
+
+
+
+      .contact-info{
+        flex: 0 0 420px;
+        width: 420px;
+      }
+
+      .contact-email{
+
+        font-size: 1.75rem;
+      }
+    }
+
+    @include breakpoint(xxlarge){
+      .contact-form-wrapper {
+        padding-right: 0;
+        flex: 0 0 calc(100% - 570px);
+        width: calc(100% - 570px);
+      }
+
+
+
+      .contact-info{
+        flex: 0 0 570px;
+        width: 570px;
+      }
+
+    }
+  }
+}
+
+
+
+// ======== SECTION ANIMATION ========
+section.full{
+  @include breakpoint(large){
+
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    z-index: -10;
+
+    -webkit-transition: bottom 1s ease;
+    -moz-transition: bottom 1s ease;
+    -ms-transition: bottom 1s ease;
+    -o-transition: bottom 1s ease;
+    transition: bottom 1s ease;
+
+
+    &.active{
+      bottom: 0;
+      z-index: 99;
+    }
+  }
+}
+
+// ======== FOOTER ========
+#main-footer{
+  text-align: center;
+  padding-top: 45px;
+  padding-bottom: 30px;
+  position: relative;
+  &::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 70%;
+    height: 0;
+    border-top: 1px solid $black;
+  }
+
+  .footer-logo{
+    width: 150px;
+    height: auto;
+    margin-bottom: 30px;
+  }
+
+  @include breakpoint(large){
+    padding: 0;
+    text-align: left;
+    position: fixed;
+    left: 30px;
+    bottom: 15px;
+    &::before{
+      content: none;
+    }
+  }
+}
+
+
+// ======== ANIMATION FUNCTIONS ========
+
+.fadein{
+  -webkit-animation: fadeIn .3s ease;
+  -moz-animation: fadeIn .3s ease;
+  -o-animation: fadeIn .3s ease;
+  animation: fadeIn .3s ease;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+.fadeout{
+  -webkit-animation: fadeOut .3s ease;
+  -moz-animation: fadeOut .3s ease;
+  -o-animation: fadeOut .3s ease;
+  animation: fadeOut .3s ease;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+
+
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+    left: 0;
+  }
+  99% {
+    opacity: 0;
+    left: 0;
+  }
+  100%{
+    opacity: 0;
+    left: -99999px;
+  }
+}
+@-moz-keyframes fadeOut {
+  0% {
+    opacity: 1;
+    left: 0;
+  }
+  99% {
+    opacity: 0;
+    left: 0;
+  }
+  100%{
+    opacity: 0;
+    left: -99999px;
+  }
+}
+@-ms-keyframes fadeOut {
+  0% {
+    opacity: 1;
+    left: 0;
+  }
+  99% {
+    opacity: 0;
+    left: 0;
+  }
+  100%{
+    opacity: 0;
+    left: -99999px;
+  }
+}
+@-o-keyframes fadeOut {
+  0% {
+    opacity: 1;
+    left: 0;
+  }
+  99% {
+    opacity: 0;
+    left: 0;
+  }
+  100%{
+    opacity: 0;
+    left: -99999px;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    left: 0;
+  }
+  99% {
+    opacity: 0;
+    left: 0;
+  }
+  100%{
+    opacity: 0;
+    left: -99999px;
+  }
+}
