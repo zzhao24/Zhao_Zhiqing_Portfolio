@@ -8,5 +8,5 @@
 * Gulp.js
 * SASS
 * Javascript Fetch API, to get data from backend database
-* Fonts: Product Sans and Inconsolata
+* Fonts: Lato Sans for header and raleway for body
 
