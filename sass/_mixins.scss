@@ -1,0 +1,12 @@
+@mixin make-column($columnNumber, $totalColumns: 12) {
+  flex: 0 0 percentage($columnNumber / $totalColumns);
+  max-width: percentage($columnNumber / $totalColumns);
+}
+
+@mixin transition-delay($sec){
+  -webkit-transition-delay: $sec;
+  -moz-transition-delay: $sec;
+  -ms-transition-delay: $sec;
+  -o-transition-delay: $sec;
+  transition-delay: $sec;
+}

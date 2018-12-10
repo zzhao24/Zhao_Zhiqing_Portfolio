@@ -1,0 +1,36 @@
+//Fonts
+$body-font-family: 'Raleway', sans-serif;
+$header-font-family: 'Lato', sans-serif;
+
+//Color
+
+$light-gray: #ececec;
+$shadow: #777777;
+
+$green: #389E61;
+$blue: #35708A;
+$yellow: #DC994E;
+$pink: #DC694E;
+
+
+%flex-box{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+%column-general{
+  width: 100%;
+
+}
+
+%fit-column{
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+%auto-column{
+  flex: 0 0 auto;
+  width: auto;
+  max-width: none
+}
